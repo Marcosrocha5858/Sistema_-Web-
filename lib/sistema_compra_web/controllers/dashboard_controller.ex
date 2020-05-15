@@ -2,6 +2,11 @@ defmodule SistemaCompraWeb.DashboardController do
   use SistemaCompraWeb, :controller
   alias SistemaCompra.Helps
 
+
+  def total_compra_dia(conn, _params) do
+    relatorio = Helps.total_compras_no_dia()
+    render(conn, "relatorio.json", relatorio: relatorio)
+  end
   def total_compra_semana(conn, _params) do
     relatorio = Helps.total_compras_semana()
     render(conn, "relatorio.json", relatorio: relatorio)

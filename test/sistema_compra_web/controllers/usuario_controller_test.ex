@@ -1,6 +1,7 @@
 defmodule SistemaCompraWeb.UsuarioControllerTest do
   use SistemaCompraWeb.ConnCase
 
+
   test "Teste insert" do
     params_usuario = %{"nome" => "Marcos", "email" => "marcosrocha@gmail"}
 
@@ -10,6 +11,7 @@ defmodule SistemaCompraWeb.UsuarioControllerTest do
       build_conn()
       |> post("api/usuario", %{"usuario" => params_usuario})
       |> json_response(201)
+      |> IO.inspect
       |> Map.get("data")
 
     {:ok, %{usuario: usuario}}
@@ -29,6 +31,16 @@ defmodule SistemaCompraWeb.UsuarioControllerTest do
     {:ok, %{compra: compra}}
   end
 
+  test "Relatorio de compras no dia" do
+    relatorio =
+      build_conn()
+      |> get("api/dashboard/total_compra_dia")
+      |> json_response(200)
+      |> Map.get("relatorio")
+      |> IO.inspect
+      {:ok , %{relatorio: relatorio}}
+  end
+
   test "Relatorio de compra  da semana" do
       relatorio =
         build_conn()
@@ -39,6 +51,8 @@ defmodule SistemaCompraWeb.UsuarioControllerTest do
         {:ok, %{relatorio: relatorio}}
 
   end
+
+
 
   test "Relatorio de compra no mes" do
     relatorio =

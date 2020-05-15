@@ -15,6 +15,7 @@ defmodule SistemaCompraWeb.Router do
   post "/compra/:id_usuario/:id_produto", CompraController, :create
 
   #___________dashboard____________
+  get "/dashboard/total_compra_dia", DashboardController, :total_compra_dia
   get "/dashboard/total_compra_semana", DashboardController, :total_compra_semana
   get "/dashboard/total_compras_mes", DashboardController, :total_compras_mes
   get "/dashboard/total_compras_mes_cliente/:id", DashboardController, :total_compras_mes_cliente

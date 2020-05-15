@@ -49,6 +49,20 @@ defmodule SistemaCompra.Helps do
 
 #dashboard Relatórios
 
+# ________Relatorio total de compras no dia ___________
+
+def total_compras_no_dia do
+  query = from( c in CompraModel,
+  where: fragment("date(?) = DATE(NOW())", c.inserted_at),
+  select: %{
+    total: count(c.id)
+  }
+
+  )
+  Repo.all(query)
+end
+
+
   # ____Relatorio total de compras na semana___________
   def total_compras_semana do
    query = from(c in CompraModel,

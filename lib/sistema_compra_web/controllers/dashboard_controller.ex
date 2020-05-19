@@ -27,4 +27,9 @@ defmodule SistemaCompraWeb.DashboardController do
     render(conn, "relatorio.json", relatorio: relatorio)
   end
 
+  def calcular_porcentagem(conn, _params) do
+    relatorio = Helps.calcular_porcentagem()
+    render(conn, "relatorio.json", relatorio: relatorio)
+  end
+
 end

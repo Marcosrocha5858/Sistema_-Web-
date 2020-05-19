@@ -120,5 +120,22 @@ def media_compras_na_semana(id) do
   Repo.all(query)
 end
 
+#___________Calcular a porcentagem ________________
+def calcular_porcentagem do
+  query = from(
+  c in CompraModel,
+  inner_join: p in ProdutoModel,
+  group_by: c.id_produto,
+  select: %{
+    porcentagem: count(c.id_produto) / count(p.valor) * 100
+
+  }
+
+  )
+
+  Repo.all(query)
+
+end
+
 
 end

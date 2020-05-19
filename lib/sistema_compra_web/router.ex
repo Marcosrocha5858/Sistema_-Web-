@@ -20,6 +20,7 @@ defmodule SistemaCompraWeb.Router do
   get "/dashboard/total_compras_mes", DashboardController, :total_compras_mes
   get "/dashboard/total_compras_mes_cliente/:id", DashboardController, :total_compras_mes_cliente
   get "/dashboard/total_media_compras_cliente/:id", DashboardController, :total_media_compras_cliente
+  get "/dashboard/calcular_porcentagem/", DashboardController, :calcular_porcentagem
 
   end
 end

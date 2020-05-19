@@ -85,6 +85,16 @@ defmodule SistemaCompraWeb.UsuarioControllerTest do
       {:ok, %{relatorio: relatorio}}
   end
 
+  test "Relatorio de porcentagem" do
+    relatorio =
+      build_conn()
+      |> get("api/dashboard/calcular_porcentagem/")
+      |> json_response(200)
+      |> Map.get("relatorio")
+      |> IO.inspect
+      {:ok, %{relatorio: relatorio}}
+  end
+
 
 
 
